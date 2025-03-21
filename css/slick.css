@@ -1,0 +1,605 @@
+@charset "utf-8";
+
+
+
+/*common*/
+ul{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	color: #fff;
+}
+a:hover,
+a:active{
+	text-decoration: none;
+}
+body {
+	font-family: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "游明朝", "Yu Mincho", "MS PMincho", "MS Mincho", serif;
+	background: black;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+    position:relative;
+	z-index: 1;
+	/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+	height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+
+.slider-top,
+.slider-bottom {
+    height: 50vh;/*スライダー上下の縦幅を画面の高さの半分（50vh）にする*/
+}
+
+/*背景画像設定*/
+
+.slider-item01 {
+    background:url(../img/img_8.jpg);
+}
+
+.slider-item02 {
+    background:url(../img/img_9.jpg);
+}
+
+.slider-item03 {
+    background:url(../img/img_13ri.jpg);
+}
+
+.slider-item04 {
+    background:url(../img/img_11_ri.jpg);
+}
+
+.slider-item05 {
+    background:url(../img/img_02_ri.jpg);
+}
+
+.slider-item06 {
+    background:url(../img/img_07_ri.jpg);
+}
+
+.slider-item {
+    width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+    height:50vh;/*各スライダーの縦幅を画面の高さの半分（50vh）にする*/
+    background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+
+/*トップメニューバー*/
+#top-rod {
+	position: fixed;  /* スクロールしても固定される */
+	top: -50px;       /* 最初は画面外に隠れている */
+	left: 0;
+	width: 100%;
+	height: 80px;
+	margin: 0;
+	padding: 0;
+	/*background-color: rgba(0, 0, 0, 0.9);  半透明の背景色 */
+	color: white;
+	padding: 10px;
+	text-align: center;
+	transition: top 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* スムーズなアニメーション */
+	z-index: 1000;
+	line-height: 60px;
+}
+
+
+#top-rod a {
+	display: inline-block;
+	line-height: 40px;
+	padding: 0 40px;
+	font-size: 18px;
+	color: white;
+	text-decoration: none;
+}
+
+div span {
+	display: block;
+}
+.time {
+	position: absolute;
+	top: -13px;
+	right: 26px;
+	font-size: 15px;
+}
+.tel {
+	font-size: 24px;
+    letter-spacing: 0.1em;
+	position: absolute;
+	top: 10px;
+	right: 26px;
+	font-size: 22px;
+}
+
+
+/* メニューバーがスクロールした後に半透明になる */
+.top-rod-transparent {
+	background-color: rgba(0, 0, 0, 0.5); /* 半透明にする */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 少し影をつける */
+}
+
+h1{
+	color: #fff;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-size:6vw;
+	letter-spacing: 0.1em;
+	text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
+	line-height: 1.2em;
+}
+
+/*Relaxationセクション*/
+
+.about_container {
+	width: 100%;   /* 要素の幅を100%に設定 */
+	height: 160vh; /* 高さを画面の高さに設定 */
+	background-image: url(..//img/background_01.png);
+	background-size: cover;
+	background-position: top; 
+}
+
+.about_container img {
+	width: 54%;
+    padding-top: 200px;
+}
+
+.about_container p,
+.enjoy_container p {
+	letter-spacing: 0.2em;
+    line-height: 1.9em;
+    font-size: 17px;
+    color: #fff;
+    width: 42%;
+    padding-left: 100px;
+	opacity: 0;
+	transform: translateY(50px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.cocktail_container p {
+	position: absolute;
+	top: 618px;
+	right: 80px;
+	letter-spacing: 0.2em;
+    line-height: 1.9em;
+    font-size: 17px;
+    color: #fff;
+    width: 40%;
+    padding-left: 100px;
+	opacity: 0;
+	transform: translateY(50px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* pスクロールで表示領域に入ったらフェードイン */
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.enjoy_container {
+	background:#555;
+	width: 100vw;
+  	height: 160vh;
+	background-image: url(..//img/magic_sectionbackground.png);
+	background-size: cover;
+}
+
+.enjoy_container img {
+	width: 42%;
+	/* position: absolute; */
+	margin: 100px 0 0;
+}
+
+
+/*ここからcocktail*/
+.cocktail_container {
+	/* text-align: right; */
+	position: relative;
+}
+.cocktail_title {
+	width: 42%;
+	position: absolute;
+	top: 100px;
+	right: 80px;
+}
+
+  
+.image-container {
+	position: relative;
+	width: 300px;
+	height: 500px;
+	
+}
+  
+.image {
+position: absolute;
+top: 100px;
+left: 70px;
+width: 100%;
+height: 100%;
+opacity: 0;
+transition: opacity 1s ease-in-out;
+object-fit: cover;
+}
+
+.image_center {
+position: absolute;
+top: -100px;
+left: 450px;
+width: 100%;
+height: 100%;
+opacity: 0;
+transition: opacity 1s ease-in-out;
+object-fit: cover;
+}
+
+.image1, .image3 {
+z-index: 1;
+}
+
+.image2, .image4 {
+z-index: 2;
+opacity: 0;
+}
+
+.show-image1, .show-image3 {
+opacity: 1;
+}
+
+.show-image2, .show-image4 {
+opacity: 1;
+}
+
+/*カクテル価格*/
+.price {
+	/* padding: 0 4px; */
+	line-height: 2.2em;
+	margin: 80px 0 40px 0;
+}
+
+.price h2 {
+	font-size: 28px;
+	padding-bottom: 10px;
+}
+
+.price h2,h3,h4 {
+	text-align: center;
+	color: #fff;
+}
+
+/*ここからLightBox*/
+.Lightbox {
+	height: 120vh;
+}
+.Lightbox ul {
+	height: 80vh;
+}
+li {
+box-sizing: border-box;
+padding: 15px;
+float: left;
+height: 230px;
+width: calc(100% / 6);
+}
+
+
+ul li a {
+display: block;
+position: relative;
+height: 100%;
+overflow:hidden;
+}
+
+ul li img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: 0.5s;
+}
+
+ul li img:hover {
+transform: scale(1.2,1.2);
+}
+
+ul li a i {
+position: absolute;
+bottom: 5px;
+right: 5px;
+color: #FFF;
+z-index: 10;
+opacity: 0.7;
+/* transition: all 0.3sease; */
+font-weight: 900;
+font-style: normal;
+font-size: 1.2em;
+}
+/*モーダルウィンドウテキスト調整、ナンバー削除*/
+#lightbox > div.lb-dataContainer > div > div.lb-details > span.lb-caption {
+font-size: 16px;
+}
+#lightbox > div.lb-dataContainer > div > div.lb-details > span.lb-number {
+display: none !important;
+}
+
+/* #cocktailPhoto > h3:first-child {
+font-size: 22px;
+padding: 48px 0 0 0;
+color: white;
+}
+#cocktailPhoto > h3:nth-of-type(2) {
+font-size: 22px;
+padding: 0;
+color: white;
+}
+#cocktailPhoto > h4:first-of-type {
+margin-top: 40px;
+color: white;
+}
+#cocktailPhoto > h4:nth-of-type(2) {
+margin-bottom: 32px;
+color: white;
+} */
+
+
+
+.parallax {
+	position: relative;
+	width: 100%;
+	height: 70vh;
+	background-image: url('../img/owner.png');
+	background-attachment: fixed; 
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.parallax-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* テキストを中央に配置 */
+	display: flex; /* 横並びにするためのフレックス */
+	gap: 24px;
+	justify-content: center; /* アイテムを中央に配置 */
+	align-items: center; /* アイテムを縦方向に中央に配置 */
+	color: white; /* テキスト色 */
+	font-size: 16px; /* フォントサイズ */
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* テキストの影をつけて視認性を向上 */
+	z-index: 10; /* 画像の上に表示されるように */
+	width: 64%;
+}
+body > section.parallax > div > span:nth-child(1) {
+	letter-spacing: 0.2em;
+}
+
+.vertical-line {
+    width: 1px;
+	height: 120px;
+	background-color: white;
+	transform: scaleX(0.6); /* 縦方向に縮小して細い線を作成 */
+}
+
+.parallax-text span:first-of-type {
+	font-size: 26px;
+}
+
+
+/*ここからnews_sectinon*/
+.news h3 {
+	margin: 100px 0 60px;
+	font-size: 34px;
+}
+
+img[src="img/Beaujolais.jpg"],
+img[src="img/Magic.png"] {
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	object-fit: cover;
+}
+.news_1 {
+	display: flex;
+	width: 44%;
+	gap: 20px;
+}
+.news1_desc {
+	padding: 6px 0 0 14px;
+}
+.news_1 h4 {
+	display: inline;
+	text-align: left;
+	padding-bottom: -2px;
+	border-bottom: 1px solid #fff;
+}
+.news_1 p {
+	font-size: 14px;
+	padding-top: 8px;
+}
+.news_wrap {
+	margin: 0 auto;
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 200px;
+}
+.news_1 a {
+	display: block;
+	text-align: right;
+	padding-top: 8px;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+}
+.news_1 a:hover {
+	opacity: 0.7;
+}
+
+.news_1 a .special {
+	display: inline;
+	padding-left: 4px;
+}
+
+
+/*ここからshop_info_section*/
+.shop_info {
+	width: 100%;
+	height: 140vh;
+	background-image: url('../img/info.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.shop_info h3 {
+	font-size: 34px;
+	padding: 100px 0 60px;
+}
+
+dl {
+	display: flex;
+	flex-wrap: wrap;
+  	width: 80%;
+	  line-height: 1.6em;
+}
+dt {
+	width: 26%;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+
+dd {
+	width: 74%;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+img[src="img/icon_map.png"] {
+	margin: 0 4px;
+    width: 12px;
+}
+dl dt a:hover {
+	opacity: 0.6;
+	text-decoration: none;
+}
+
+img[src="img/rogo.png"] {
+	width: 180px;
+	height: auto;
+}
+.shop_info h4 {
+	font-size: 20px;
+	text-align: left;
+}
+img[src="img/icon_ins.png"],
+img[src="img/icon_fb.png"] {
+	display: block;
+	width: 30px;
+	height: auto;
+	padding-top: 20px;
+}
+.flex-left a:hover {
+	opacity: 0.6;
+}
+
+
+.flex_wrap {
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	margin: 0 auto;
+}
+.flex-left {
+	width: 50%;
+}
+
+/*ここからgoogleMap*/
+.googleMap h3 {
+	font-size: 22px;
+	padding: 100px 0 30px
+}
+iframe {
+	width: 70%;
+	filter: grayscale(100%);
+}
+
+/*ここからフッター*/
+
+footer {
+    position: relative;  /* 親要素にrelativeを設定 */
+	min-height: 70vh;  
+}
+#page-top {
+    position: absolute;  /* 親要素に対して絶対位置を指定 */
+    right: 16px;          /* 右端に余白を持たせて調整 */
+    bottom: 24px;            /* 親要素の下端に配置 */
+    height: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transform: rotate(90deg); /* 矢印を回転させる */
+    font-size: 90%;
+    line-height: 1.5rem;
+    color: #737373;
+    padding: 0 0 0 35px;
+    border-top: solid 1px;
+}
+
+#page-top::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    width: 20px;  /* 矢印部分を長くする */
+    border-top: solid 2px;  /* 矢印の太さを調整 */
+    transform: rotate(35deg);  /* 矢印の角度調整 */
+    transform-origin: left top;
+}
+
+footer img {
+	margin: 40px 0 0 168px;
+}
+
+.footer_nav {
+	width: 70%;
+	height: 80px;
+	margin: 0;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 28px;
+}
+
+.footer_nav a {
+	text-decoration: none;
+	padding: 0 20px;
+}
+.footer_nav a:hover {
+	opacity: 0.6;
+}
+
+.footer_wrap {
+	display: flex;
+}
+
+.footer_wrap h4 {
+	font-size: 18px;
+	letter-spacing: 0.2em;
+}
+
+
+
+.dummySpace {
+	height: 100vh;
+}
