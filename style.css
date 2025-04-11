@@ -1,0 +1,1066 @@
+@charset "utf-8";
+
+/* common */
+body {
+  font-family: 'Zen Antique', 'Noto Sans JP',serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+h1, h2, h3 {
+  color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style:none;
+}
+
+/* ここからPC_background */
+.pc_logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  max-width: 230px;
+}
+img[src="img/milk shop.png"] {
+  width: 100%;
+  height: auto;
+}
+
+.pc_menu {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin: 0 auto;
+  color: #001976;
+  text-align: center;
+  z-index: 2;
+}
+
+.pc_menu ul {
+  padding: 25px 20px;
+  width: 100%;
+  text-align: right;
+}
+
+.pc_menu ul li {
+  color: #001976;
+  text-align: right;
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px solid #061871;
+  margin-bottom: 11px;
+  line-height: 1.2;
+  font-size: 14px;
+  letter-spacing: .02em;
+}
+.pc_menu ul li p {
+  color: #001976;
+  text-align: right;
+}
+
+.tvcm > p {
+  color: #001976;
+  font-size: 20px !important;
+  text-align: left;
+  margin-top: 14px;
+}
+
+.zen {
+  font-family:'Zen Antique',sans-serif;
+  font-size: 30px;
+}
+/*vertical-align調整*/
+.pc_menu ul li:nth-of-type(4) p:first-of-type,
+.pc_menu ul li:nth-of-type(5) p:first-of-type,
+.pc_menu ul li:nth-of-type(6) p:first-of-type {
+  padding-bottom: 3px;
+}
+.noto {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  margin-bottom: 17.5px;
+}
+
+
+.attachment_img {
+  background-image: url(img/attachment_img.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+/*モーダルウィンドウ*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s;
+  z-index: 400;
+
+}
+.modal {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  background: blue;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.close-btn:hover {
+  background: #999;
+}
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+.overlay.show .modal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay > .modal > h2 {
+  width: 70%;
+  margin: 0 auto;
+} 
+
+.overlay > .modal > p {
+  padding: 22px;
+}
+
+/* ここからメインコンテンツ */
+main {
+  width: 385px;
+  background: red;
+  position: relative;/*ここにrelativeを設定するとheightが自動で要素の高さになります*/
+  z-index: 300;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 3px 46px rgba(0, 0, 0, .16);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/*ヘッダー*/
+.pc_head {
+  width: 100%;
+  height: 50.76px;
+  padding-left: 4px;
+  background-color: #001976;
+  z-index: 200;
+  display:none;
+}
+
+.sp_head {
+  width: 100%;
+  height: 50.76px;
+  padding-left: 4px;
+  background-color: #001976;
+  z-index: 200;
+  /* display:none; */
+  display: flex;  /* ← 追加：Flexbox を適用 */
+  align-items: center;  /* ← 追加：垂直方向の中央揃え */
+  padding-right: 16px
+}
+
+.pc_head a,
+.sp_head a {
+  display: inline-block;
+  line-height: 50.76px;
+}
+
+.pc_head img,
+.sp_head img {
+  width: 100px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.hamburger {
+  margin-left: auto;
+}
+
+#open {
+  color: #fff;
+  font-size: 32px;
+  line-height: 50.76px;
+  cursor: pointer;
+}
+
+.hero_area img {
+  width: 100%;
+}
+
+/*news*/
+.news_title {
+  padding-bottom: 40px;
+}
+
+.news_title h3,p {
+  text-align: center;
+  color: #fff;
+} 
+body > div > div.attachment_img > main > div.news_title > p {
+  color: #fff;
+}
+.news {
+  color: #fff;
+  margin: 20px 15px;
+  padding: 25px 5px 25px 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+
+dl {
+  max-height: 358px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+dl::-webkit-scrollbar{
+  width: 9px;
+}
+dl::-webkit-scrollbar-track{
+  background-color: #ccc;
+}
+dl::-webkit-scrollbar-thumb{
+  background-color: #001976;
+  height: 20px;
+}
+
+
+/*milk shopこだわり*/
+.commitment img {
+  width: 48%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.commitment h4 {
+  margin: 20px 0  30px;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+  color: #444;
+}
+
+hr {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.commitment h5 {
+  color: #001976;
+  text-align: center;
+  font-weight: 200;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.commitment p {
+  margin: 40px 0 60px;
+  color: #444;
+  font-family: 'Noto Sans JP';
+  text-align: center;
+  line-height: 1.8em;
+}
+
+
+/*ここからslider*/
+/* ユーザー提供の基本スタイル */
+body {
+  font-family: 'Zen Antique', 'Noto Sans JP', serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+/* * の設定は適用される前提 */
+
+/* スライダー固有のスタイル */
+.slider {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-container {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.slider-wrapper {
+  display: flex;
+}
+
+.slide {
+  flex: 0 0 80%;
+  max-width: 80%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  border-radius: 6px;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #001976;
+  color: white;
+  border: none;
+  padding: 8px 5px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 10;
+  min-width: 50px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.slider-button.prev {
+  left: 10px;
+}
+
+.slider-button.next {
+  right: 10px;
+}
+
+.slider-button:hover {
+  background-color: #00135e;
+}
+
+.button-text {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* テキストスライダー用のスタイル */
+.text-slider-container {
+  width: 80%;
+  height: 40vh;
+  max-height: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  margin: 12px auto 20px auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.text-slider-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.text-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+  /* ★★★ フォント指定を追加 ★★★ */
+  /* font-family: 'Noto Sans JP', sans-serif; */
+}
+
+.text-slide h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.6em;
+  font-weight: 400;
+  color: #001976;
+}
+
+.text-slide h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #001976;
+  font-weight: normal;
+  /* font-family は親から継承 */
+}
+
+.text-slide p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #001976;
+  line-height: 1.6;
+  text-align: left;
+  font-family: 'Noto Sans JP';
+}
+
+
+
+
+
+
+/* General Styles */
+body {
+  font-family: 'Zen Antique', 'Noto Sans JP', serif;
+  /* background-color: #f4f4f4; */
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+h3, h4, p {
+  color: #001976; /* Default text color for slider content */
+}
+
+.simple-slider-wrapper {
+  background-color: rgba(0, 0, 0, .6);
+  margin: 0 15px 30px 15px;
+  border-radius: 8px;
+}
+
+/* Slider Styles */
+.simple-slider {
+  width: 100%;
+  max-width: 500px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  /* background-color: #00135e; */
+  padding: 20px 0; /* Add some vertical padding */
+  border-radius: 10px; /* Optional: Add rounding */
+}
+
+/* Image Display Area */
+.image-display-area {
+  position: relative; /* Crucial for absolute positioning of controls */
+  /* --- Updated Width --- */
+  width: 80%; /* Changed from 90% to match text-viewer */
+  /* --- End Update --- */
+  margin: 0 auto; /* Center within the slider */
+}
+
+/* Image Viewer */
+.image-viewer {
+  width: 100%; /* Take full width of the display area */
+  overflow: hidden;
+  border-radius: 8px; /* Match original border-radius */
+}
+
+.image-track {
+  display: flex;
+  box-sizing: border-box;
+  gap: 10px; /* Gap between image items */
+  transition: transform 0.5s ease-in-out; /* Animation for sliding */
+}
+
+.image-item {
+  /* position: relative; */
+  /* Width is viewer width minus the peek amount on each side (e.g., 20px * 2 = 40px) */
+  flex: 0 0 calc(100% - 40px);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.image-item img {
+  display: block;
+  width: 76%;
+  /* aspect-ratio: 3 / 2;  */
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  border-radius: 6px; /* Match original slide img radius */
+  padding: 20px 20px;
+}
+
+/* Navigation Controls */
+.navigation-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Button Styles */
+.nav-button {
+  background-color: #fff;
+  color: #001976; /* Sets color for text and SVG stroke */
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold; /* Keep text bold */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px; /* Adjust min-width if needed */
+  min-height: 45px; /* Ensure minimum height */
+  pointer-events: auto;
+  line-height: 1.2; /* Adjust line-height for closer spacing */
+  margin: 0 -20px;
+}
+body > div > div.attachment_img > main > section > div.simple-slider-wrapper > div > div.image-display-area > div.navigation-controls > button.nav-button.next-btn:hover,body > div > div.attachment_img > main > section > div.simple-slider-wrapper > div > div.image-display-area > div.navigation-controls > button.nav-button.prev-btn:hover {
+  background-color: #dcdcdc;
+}
+
+.button-text {
+  font-size: 10px; /* Set font size for BACK/NEXT */
+  display: block; /* Ensure it takes block space */
+  margin-bottom: 2px; /* Space between text and icon */
+}
+
+.arrow-icon {
+  width: 16px; /* Icon size */
+  height: 16px;
+  display: block; /* Ensure it takes block space */
+}
+
+.nav-button:hover {
+  background-color: #000b3d; /* Darker hover for contrast with slider bg */
+}
+
+.nav-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Text Viewer */
+.text-viewer {
+  width: 80%; /* Relative to the slider's width */
+  max-height: 300px; /* Keep max-height */
+  /* background-color: #ffffff; */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 15px auto 0 auto; /* Margin top, auto horizontal, no bottom */
+  overflow: hidden;
+  position: relative;
+}
+
+.text-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.text-item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.text-item h3 {
+  /* position: absolute; */
+  margin: 0 0 5px 0;
+  font-size: 1.6em;
+  font-weight: 400;
+  color: #fff;
+}
+
+.text-item h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  font-weight: normal;
+  color: #fff;
+}
+
+.text-item p {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+  text-align: left;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #fff;
+}
+
+.simple-back {
+  background-image: url("img/slider_back.png");
+  /* height: 100vh; */
+  padding-bottom: 100px;
+}
+
+.simple-back > h3 {
+  font-size: 34px;
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+  padding-top: 60px;
+}
+.simple-back > p {
+  color: #fff;
+  padding-bottom: 22px;
+}
+
+
+/*ここから二つ星受賞*/
+.award {
+  background: #fff;
+  margin: 0 15px;
+  padding: 20px 16px 30px;
+  border-radius: 10px;
+}
+
+.award .award_back {
+  background-image: url(img/award_chef.png);
+  aspect-ratio: 2 / 1; 
+  background-size: cover;    
+  background-position: center;
+  width: calc(100% + 32px); /* 左右のpadding合計 */
+  position: relative;
+  left: -16px; /* 左padding分だけ戻す */
+  margin-bottom: 30px;
+}
+
+.award .brackets > h3 {
+  position: relative;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 400;
+}
+
+
+.award .brackets > h3::before {
+  border-left: solid 2px #061871;
+  border-top: solid 2px #061871;
+  border-bottom: solid 2px #061871;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 8.77px;
+  height: 100%;
+  position: absolute;
+  margin-left: 8px;
+}
+.award .brackets > h3::after {
+  border-right: solid 2px #061871;
+  border-top: solid 2px #061871;
+  border-bottom: solid 2px #061871;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 8.77px;
+  height: 100%;
+  position: absolute;
+  margin-right: 8px;
+}
+
+.brackets {
+  padding: 18px ;
+}
+
+.award > h4 {
+  font-weight: 400;
+  text-align: center;
+  font-size: 19px;
+  padding-bottom: 16px;
+}
+
+.flex_img {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 82%;
+  padding: 26px 0 20px 0;
+}
+.flex_img > img {
+  display: block;
+  width: 100px;
+}
+
+
+/*ここからline-up*/
+.line-up {
+  background-color: #1D5CA5;
+  padding-bottom: 20px;
+}
+.line-up h3 {
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+  font-size: 34px;
+  padding-top: 60px;
+}
+.line-up h4 {
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+.standard,.revival,.supreme {
+  background: linear-gradient(to bottom, #fff 60%, #fff8D6);
+  margin: 0 15px 8px 15px;
+  border-radius: 10px;
+}
+.standard img {
+  display: block;
+  width: 30%;
+}
+
+.standard h5,.revival h5,.supreme h5 {
+  font-size: 26px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  color: #061871;
+  padding: 23px 0;
+}
+
+.standard p {
+  color: #444;
+  font-family: 'Noto Sans JP';
+  text-align: center;
+  line-height: 1.8em;
+}
+body > div > div.attachment_img > main > section.line-up > div.revival > p,
+body > div > div.attachment_img > main > section.line-up > div.supreme > p {
+  color: #444;
+  font-family: 'Noto Sans JP';
+  text-align: center;
+  line-height: 1.8em;
+}
+
+.img-wrap {
+  display: flex;
+  flex-wrap: wrap;  /* 画像が親要素の幅を超えた場合に折り返す */
+  gap: 28px; /* 画像間の隙間 */
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.img-wrap img {
+  width: 32%;  /* 各画像の幅をほぼ50%に設定 */
+  height: auto;  /* 高さは自動調整 */
+}
+
+.supreme img {
+  display: block;
+  width: 34%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+  
+
+/*ここからSpecialRecipe*/
+.special-recipe {
+  background-color: #121f29;
+  padding: 100px 0;
+}
+
+.center {
+  width: 236px;
+  margin: 0 auto;
+}
+
+.recipe-title,.local-title {
+  color: #fff;
+  font-size: 34px;
+  letter-spacing: .03em;
+  /* line-height: 1.57; */
+  padding: 18.7px 22px; /* 左右のpaddingを調整 */
+  border-top: 1px solid rgba(255, 255, 255, .44);
+  border-bottom: 1px solid rgba(255, 255, 255, .44);
+  margin: 0 auto;
+  width: max-content; /* 内容に合わせて幅を調整 */
+}
+
+.special-recipe > p {
+  color: #fff;
+  width: 60%;
+  margin: 0 auto;
+  font-family: 'Noto Sans JP', sans-serif;
+  padding: 22px 0;
+}
+
+.recipe-list {
+  display: flex; /* 横並びにするためにflexboxを使用 */
+  justify-content: space-between; /* 画像間のスペースを均等に配置 */
+  width: 90%; /* ulの幅をコンテンツの90%に設定 */
+  margin: 0 auto; /* 中央に配置 */
+  padding: 0;
+  /* list-style: none;  */
+}
+
+.recipe-list li {
+  flex: 0 0 calc(33.33% - 20px); /* 画像が3つ並ぶようにし、間隔を考慮 */
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.recipe-list img {
+  width: 100%; /* 画像が親要素の幅に合わせる */
+  height: auto; /* アスペクト比を保つ */
+  display: block; /* 不要な余白をなくす */
+  transition: transform 0.3s ease;
+}
+
+.recipe-list li:hover img {
+  transform: scale(1.1); /* 画像を10%拡大 */
+}
+
+.more {
+  background: #fff;
+  width: 130px;
+  text-align: center;
+  color: #061871;
+  font-family: "Barlow Condensed", sans-serif;
+  padding: 7px 0;
+  margin: 0 auto;
+  font-size: 18px;
+  position: relative;
+  margin-top: 22px;
+}
+.more:hover {
+  cursor: pointer;
+}
+
+.more > span {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1em;
+  transform: scale(1.5);
+  /* display: inline-block; */
+  position: absolute;
+  /* vertical-align: middle; */
+  top: 6px;
+  right: 32px;
+}    
+
+/*ここからfooter*/
+footer {
+  background-color: #00157B;
+}
+.footer-area {
+  padding-top: 40px;
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.footer-area > a {
+  display: block;
+  font-family: 'Noto Sans JP';
+  text-decoration: underline;
+  font-size: 10px;
+  color: #fff;
+}
+.footer-area > a:hover {
+  opacity: 0.3;
+}
+
+footer img[src="img/x_icon.png"] {
+  display: block;
+  margin: 0 auto;
+  width: 50px;
+  padding: 32px 0;
+}
+
+footer img:hover {
+  cursor: pointer;
+}
+
+.footer-logo {
+  background: #fff;
+}
+.footer-logo img[src="img/milk shop.png"] {
+  display: block;
+  width: 42%;
+  height: auto;
+  margin: 0 auto;
+  padding: 22px 0;
+}
+
+.copy-right {
+  background-color: #00157B;
+  padding: 20px 0;
+} 
+
+.copy-right > p {
+  color: #fff;
+  font-family: 'Noto Sans JP';
+  font-size: 10px;
+}
+
+
+
+
+.back-button {
+  position: fixed;
+  bottom: 6px;
+  right: calc(50% - 224px); /* mainの中央から左に385px/2=192.5px + 20px余白 */
+  /* width: 50px;
+  height: 50px; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100; */
+}
+.back-button:hover {
+  cursor: pointer;
+}
+img[src="img/arrow.png"] {
+  width: 50%;
+}
+
+@media (max-width: 913px) {
+  .pc_menu ul li  p:first-child {
+    font-size: 20px;
+  }
+  .pc_logo {
+    width: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pc_menu  {
+    display: none;
+  }
+  .pc_logo {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  main {
+    width: 100%;
+  }
+  .back-button {
+    position: fixed;
+    bottom: 6px;
+    right: calc(50% - 300px); /* mainの中央から左に385px/2=192.5px + 20px余白 */
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+/* .barlow-condensed-regular {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-condensed-medium {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
